@@ -24,6 +24,8 @@
 - For interactions in the React app you're free to use reducers, individual component state or any other library, but again, please keep it simple.
 - Typescript use is OK but not required.
 - SCSS use is not required. It is OK to include compiled CSS files or CDN urls.
+- This test shouldn't take you more than 4-6 hours to complete.
+- After the invitation is sent, your acccess rights to this repo will last 48 hours.  
 
 
 Good luck!
