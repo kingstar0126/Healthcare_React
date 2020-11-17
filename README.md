@@ -1,6 +1,6 @@
 # fullstack-candidate-testing
 
-## instructions
+## Instructions
 
 
 1. Clone this repo. Then clone the main branch and use the following naming convention for the new branch: **firstname-lastname-YYYY-MM-DD**. If your name is John Doe, and today's date is 2020-11-17, then the new branch should be called **john-doe-2020-11-17**.
