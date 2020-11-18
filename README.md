@@ -27,5 +27,8 @@
 - This test shouldn't take you more than 4-6 hours to complete.
 - After the invitation is sent, your acccess rights to this repo will last 48 hours.  
 
+## Important
+
+The screenshot files are for reference only. The React app you are required to build has to look like these screenshots, but we don't expect your views to be an exact clone of every single one of them. All the components in the screenshot were built in plain .jsx with Tailwind CSS, with almost no custom and no additional design assets (images, svg, logos).
 
 Good luck!
