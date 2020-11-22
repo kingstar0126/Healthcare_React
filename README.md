@@ -8,9 +8,9 @@
 3. In the **/data** folder you will find 2 .json files. This is the data you will use to build the React app. You have to build a simple REST API to consume the data in the React app.
 4. In the **/screenshots** folder you will find what you are required to build for this test. 
 5. We strongly recommend you use Next.js and TailwindCSS for this test, since these are the frameworks we are using to build our own apps, but if you're not familiar with them, then create-react-app or Bootstrap 4 or 5 are fine. 
-6.- The search input on top of the page should work. The search index should be built using the **/data/jobs.json** file.
-7.- Sort by options on top of the page should sort in 3 states per each filter: ascending, descending or remove the sorting operation.
-8.- Sort by options should work simultaneously with other sort by options and with the search input if the user is searching for something. This means that the user could sort for example by Location:asc, Department:asc while searching for a Nurse in California.
+6. The search input on top of the page should work. The search index should be built using the **/data/jobs.json** file.
+7. Sort by options on top of the page should sort in 3 states per each filter: ascending, descending or remove the sorting operation.
+8. Sort by options should work simultaneously with other sort by options and with the search input if the user is searching for something. This means that the user could sort for example by Location:asc, Department:asc while searching for a Nurse in California.
 
 ## After you're done:
 1. Push you branch
