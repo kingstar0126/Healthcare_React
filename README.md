@@ -11,6 +11,8 @@
 6. The search input on top of the page should work. The search index should be built using the **/data/jobs.json** file.
 7. Sort by options on top of the page should sort in 3 states per each filter: ascending, descending or remove the sorting operation.
 8. Sort by options should work simultaneously with other sort by options and with the search input if the user is searching for something. This means that the user could sort for example by Location:asc, Department:asc while searching for a Nurse in California.
+9. Ensure your code can work with unstable internet connection (see in pages/api/jobs.js)
+10. Implement unit tests for API at the server-side
 
 ## After you're done:
 1. Push you branch
