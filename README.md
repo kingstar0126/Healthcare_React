@@ -1,5 +1,9 @@
 # fullstack-candidate-testing
 
+## Deployment public link
+
+https://hong-lin-clipboard-health-explorer.vercel.app/
+
 ## Instructions
 
 
