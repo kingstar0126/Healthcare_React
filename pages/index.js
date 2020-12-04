@@ -9,6 +9,7 @@ import useDebounce from '../hooks/debounce';
 import Spinner from '../components/Spinner';
 import DepartmentsDialog from '../components/DepartmentsDialog';
 import SortBar from '../components/SortBar';
+import Notification from '../components/Notification';
 
 const defaultFilters = {
   job_type: [],
@@ -17,11 +18,20 @@ const defaultFilters = {
   department: [],
 };
 
+const defaultNotification = {
+  show: false,
+  color: 'pink',
+  type: 'error',
+  message: '',
+};
+
 export default function Home() {
   const [keyword, setKeyword] = useState('');
   const debouncedKeyword = useDebounce(keyword, 500);
   const [activeSortKey, setActiveSortKey] = useState(null);
   const [sortState, setSortState] = useState('asc');
+
+  const [notification, setNotification] = useState(defaultNotification);
 
   const [isDepartmentDialogOpen, setDepartmentDialogOpen] = useState(false);
 
@@ -33,8 +43,7 @@ export default function Home() {
       const res = await JobsService.filters();
       setFilters(res);
     } catch (e) {
-      console.log(e);
-      // TODO: show toast
+      showNotification('pink', 'error', 'Failed to fetch data from the server.');
     } finally {
       setFiltersLoading(false);
     }
@@ -50,7 +59,7 @@ export default function Home() {
       setJobs(res);
       setTotalJobCount(res.reduce((sum, job) => sum + job.total_jobs_in_hospital, 0));
     } catch (e) {
-      console.log(e);
+      showNotification('pink', 'error', 'Failed to fetch data from the server.');
     } finally {
       setJobsLoading(false);
     }
@@ -63,6 +72,10 @@ export default function Home() {
   useEffect(() => {
     loadJobs();
   }, [debouncedKeyword, activeSortKey, sortState]);
+
+  const showNotification = (color, type, message) => {
+    setNotification({ show: true, color, type, message });
+  };
 
   return (
     <Layout>
@@ -82,7 +95,7 @@ export default function Home() {
           <div className="ml-0 lg:ml-4 mb-4 w-full bg-white">
             <div className="mt-8 ml-4 mr-8 flex justify-between text-sm">
               <div>
-                <span className="font-bold">{totalJobCount.toLocaleString()} </span><span>job posting</span>
+                <span className="font-bold">{totalJobCount.toLocaleString()} </span><span>job postings</span>
               </div>
               <SortBar state={sortState} activeSortKey={activeSortKey} setState={setSortState} setActiveSortKey={setActiveSortKey}/>
             </div>
@@ -91,6 +104,7 @@ export default function Home() {
         </section>
       </div>
       { isDepartmentDialogOpen && <DepartmentsDialog departments={filters.department} onClose={() => setDepartmentDialogOpen(false)}/> }
+      { notification.show && <Notification {...notification} onClose={() => setNotification({ show: false })}/> }
     </Layout>
   );
 }
