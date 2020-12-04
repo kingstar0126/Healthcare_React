@@ -7,6 +7,7 @@ import JobsList from '../components/JobsList';
 import { JobsService } from '../services/jobs.service';
 import useDebounce from '../hooks/debounce';
 import Spinner from '../components/Spinner';
+import DepartmentsDialog from '../components/DepartmentsDialog';
 
 const defaultFilters = {
   job_type: [],
@@ -18,6 +19,7 @@ const defaultFilters = {
 export default function Home() {
   const [keyword, setKeyword] = useState('');
   const [sortByKey, setSortByKey] = useState('location');
+  const [isDepartmentDialogOpen, setDepartmentDialogOpen] = useState(false);
 
   const debouncedKeyword = useDebounce(keyword, 500);
 
@@ -76,7 +78,7 @@ export default function Home() {
                          departments={filters.department}
                          workSchedules={filters.work_schedule}
                          experiences={filters.experience}
-                         onShowMoreDepartments={showMoreDepartments}
+                         onShowMoreDepartments={() => setDepartmentDialogOpen(true)}
                          isLoading={isFiltersLoading}/>
           </div>
           <div className="ml-0 lg:ml-4 mb-4 w-full bg-white">
@@ -97,6 +99,7 @@ export default function Home() {
           </div>
         </section>
       </div>
+      { isDepartmentDialogOpen && <DepartmentsDialog departments={filters.department} onClose={() => setDepartmentDialogOpen(false)}/> }
     </Layout>
   );
 }
