@@ -51,7 +51,7 @@ export default async function queryJobs(req, res) {
   // you need to figure out how to guarantee that client side will render
   // correct results even if server-side can't finish replies in the right order
   await new Promise((resolve)=>setTimeout(resolve, 1000 * Math.random()));
-  // res.json(jobsData);
-  res.error('hello');
+  res.json(jobsData);
+  // res.error('mock error response');
   return jobsData;
 }
