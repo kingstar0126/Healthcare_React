@@ -2,7 +2,7 @@
 import jobs from '../../data/jobs';
 import { sortObjectArrayByKeyAndDirection } from '../../utils/array.util';
 
-export default async (req, res) => {
+export default async function queryJobs(req, res) {
   res.statusCode = 200;
   const keyword = (req.query.keyword || '').toLowerCase();
   const sortKey = req.query.sortKey;
@@ -52,4 +52,5 @@ export default async (req, res) => {
   // correct results even if server-side can't finish replies in the right order
   await new Promise((resolve)=>setTimeout(resolve, 1000 * Math.random()));
   res.json(jobsData);
+  return jobsData;
 }
