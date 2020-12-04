@@ -8,6 +8,7 @@ import { JobsService } from '../services/jobs.service';
 import useDebounce from '../hooks/debounce';
 import Spinner from '../components/Spinner';
 import DepartmentsDialog from '../components/DepartmentsDialog';
+import SortBar from '../components/SortBar';
 
 const defaultFilters = {
   job_type: [],
@@ -18,10 +19,11 @@ const defaultFilters = {
 
 export default function Home() {
   const [keyword, setKeyword] = useState('');
-  const [sortByKey, setSortByKey] = useState('location');
-  const [isDepartmentDialogOpen, setDepartmentDialogOpen] = useState(false);
-
   const debouncedKeyword = useDebounce(keyword, 500);
+  const [activeSortKey, setActiveSortKey] = useState(null);
+  const [sortState, setSortState] = useState('asc');
+
+  const [isDepartmentDialogOpen, setDepartmentDialogOpen] = useState(false);
 
   const [isFiltersLoading, setFiltersLoading] = useState(false);
   const [filters, setFilters] = useState(defaultFilters);
@@ -44,7 +46,7 @@ export default function Home() {
   const loadJobs = async () => {
     setJobsLoading(true);
     try {
-      const res = await JobsService.query(keyword, sortByKey);
+      const res = await JobsService.query(keyword, activeSortKey, sortState);
       setJobs(res);
       setTotalJobCount(res.reduce((sum, job) => sum + job.total_jobs_in_hospital, 0));
     } catch (e) {
@@ -60,11 +62,7 @@ export default function Home() {
 
   useEffect(() => {
     loadJobs();
-  }, [debouncedKeyword, sortByKey]);
-
-  const showMoreDepartments = () => {
-    // TODO: display departments dialog
-  };
+  }, [debouncedKeyword, activeSortKey, sortState]);
 
   return (
     <Layout>
@@ -82,18 +80,11 @@ export default function Home() {
                          isLoading={isFiltersLoading}/>
           </div>
           <div className="ml-0 lg:ml-4 mb-4 w-full bg-white">
-            <div className="mt-8 mx-2 flex justify-between text-sm">
+            <div className="mt-8 ml-4 mr-8 flex justify-between text-sm">
               <div>
                 <span className="font-bold">{totalJobCount.toLocaleString()} </span><span>job posting</span>
               </div>
-              <div className="hidden lg:block space-x-4 flex justify-between">
-                <span className="text-gray-600">Sort by</span>
-                <button className="focus:outline-none" onClick={() => setSortByKey('location')}>Location</button>
-                <button className="focus:outline-none" onClick={() => setSortByKey('role')}>Role</button>
-                <button className="focus:outline-none" onClick={() => setSortByKey('department')}>Department</button>
-                <button className="focus:outline-none" onClick={() => setSortByKey('education')}>Education</button>
-                <button className="focus:outline-none" onClick={() => setSortByKey('experience')}>Experience</button>
-              </div>
+              <SortBar state={sortState} activeSortKey={activeSortKey} setState={setSortState} setActiveSortKey={setActiveSortKey}/>
             </div>
             { isJobsLoading ? <div className="flex justify-center items-center h-full"><Spinner size={10}/></div> : <JobsList jobs={jobs}/> }
           </div>

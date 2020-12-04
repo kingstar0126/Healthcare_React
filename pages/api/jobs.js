@@ -6,7 +6,7 @@ export default async (req, res) => {
   res.statusCode = 200;
   const keyword = (req.query.keyword || '').toLowerCase();
   const sortKey = req.query.sortKey;
-  const sortDirection = req.query.direction; // 'asc' or 'desc'
+  const sortDirection = req.query.sortDirection; // 'asc' or 'desc'
 
   let jobsData = JSON.parse(JSON.stringify(jobs));
   jobsData.forEach(job => {
