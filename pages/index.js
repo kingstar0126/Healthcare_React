@@ -20,7 +20,6 @@ const defaultFilters = {
 
 const defaultNotification = {
   show: false,
-  color: 'pink',
   type: 'error',
   message: '',
 };
@@ -43,7 +42,7 @@ export default function Home() {
       const res = await JobsService.filters();
       setFilters(res);
     } catch (e) {
-      showNotification('pink', 'error', 'Failed to fetch data from the server.');
+      showNotification('error', 'Failed to fetch data from the server.');
     } finally {
       setFiltersLoading(false);
     }
@@ -59,7 +58,7 @@ export default function Home() {
       setJobs(res);
       setTotalJobCount(res.reduce((sum, job) => sum + job.total_jobs_in_hospital, 0));
     } catch (e) {
-      showNotification('pink', 'error', 'Failed to fetch data from the server.');
+      showNotification('error', 'Failed to fetch data from the server.');
     } finally {
       setJobsLoading(false);
     }
@@ -73,8 +72,8 @@ export default function Home() {
     loadJobs();
   }, [debouncedKeyword, activeSortKey, sortState]);
 
-  const showNotification = (color, type, message) => {
-    setNotification({ show: true, color, type, message });
+  const showNotification = (type, message) => {
+    setNotification({ show: true, type, message });
   };
 
   return (
