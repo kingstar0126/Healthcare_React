@@ -98,7 +98,7 @@ export default function Home() {
               </div>
               <SortBar state={sortState} activeSortKey={activeSortKey} setState={setSortState} setActiveSortKey={setActiveSortKey}/>
             </div>
-            { isJobsLoading ? <div className="flex justify-center items-center h-full"><Spinner size={10}/></div> : <JobsList jobs={jobs}/> }
+            { isJobsLoading ? <div className="flex justify-center items-center h-48"><Spinner size={10}/></div> : <JobsList jobs={jobs}/> }
           </div>
         </section>
       </div>
