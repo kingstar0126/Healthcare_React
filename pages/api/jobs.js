@@ -40,7 +40,7 @@ export default async function queryJobs(req, res) {
         job.items = sortObjectArrayByKeyAndDirection(job.items, sortDirection, 'experience');
         break;
       default:
-        console.log('switch fallback');
+        // sort key fallback
     }
   });
 
