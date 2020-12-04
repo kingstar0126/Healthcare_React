@@ -1,6 +1,6 @@
 const Navbar = () => {
     return (
-        <nav className="fixed flex justify-between items-center w-full bg-white p-6">
+        <nav className="fixed flex justify-between items-center w-full bg-white p-6 z-50">
             <div>
                 <a href="#" className="text-blue-500 text-xl font-bold">HEALTH EXPLORER</a>
             </div>
