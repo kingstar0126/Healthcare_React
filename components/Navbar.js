@@ -2,7 +2,8 @@ import React from 'react';
 
 const Navbar = () => {
     return (
-        <nav className="fixed flex justify-between items-center w-full bg-white p-6 z-50">
+        <nav className="fixed bg-white w-full">
+          <div className="container mx-auto flex justify-between items-center w-full bg-white p-6 z-50">
             <div>
                 <a href="#" className="text-blue-500 text-xl font-bold">HEALTH EXPLORER</a>
             </div>
@@ -30,6 +31,7 @@ const Navbar = () => {
                 <img alt="Avatar" src="https://eu.ui-avatars.com/api/?rounded=true&name=John%20Doe&background=3b82f6&color=fff&size=48"/>
                 <a className="hidden lg:block font-bold no-underline">LOGOUT</a>
             </div>
+          </div>
         </nav>
     )
 };
