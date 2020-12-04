@@ -7,7 +7,7 @@ const Navbar = () => {
                 <a href="#" className="text-blue-500 text-xl font-bold">HEALTH EXPLORER</a>
             </div>
 
-            <ul className="lg:flex hidden lg:block space-x-4 md:space-x-8 xl:space-x-8 text-gray-900">
+            <ul className="lg:flex hidden lg:block space-x-3 lg:space-x-4 xl:space-x-8 text-gray-900">
                 <li className="">
                     <a className="font-bold no-underline" href="#">PROFILE</a>
                 </li>

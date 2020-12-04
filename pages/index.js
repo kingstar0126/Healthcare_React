@@ -6,6 +6,7 @@ import JobsSideBar from '../components/JobsSideBar';
 import JobsList from '../components/JobsList';
 import { JobsService } from '../services/jobs.service';
 import useDebounce from '../hooks/debounce';
+import Spinner from '../components/Spinner';
 
 const defaultFilters = {
   job_type: [],
@@ -35,7 +36,7 @@ export default function Home() {
     }
   };
 
-  const [isJobsLoading, setJobsLoading] = useState(false);
+  const [isJobsLoading, setJobsLoading] = useState(true);
   const [jobs, setJobs] = useState([]);
   const [totalJobCount, setTotalJobCount] = useState(0);
   const loadJobs = async () => {
@@ -92,7 +93,7 @@ export default function Home() {
                 <button className="focus:outline-none" onClick={() => setSortByKey('experience')}>Experience</button>
               </div>
             </div>
-            <JobsList jobs={jobs} isLoading={isJobsLoading}/>
+            { isJobsLoading ? <div className="flex justify-center items-center h-full"><Spinner size={10}/></div> : <JobsList jobs={jobs}/> }
           </div>
         </section>
       </div>
