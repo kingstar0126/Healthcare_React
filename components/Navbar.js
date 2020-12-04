@@ -28,11 +28,11 @@ const Navbar = () => {
 
         <div className="flex items-center justify-around space-x-4">
           <button className="hidden lg:block font-bold text-blue-500 border border-blue-400 rounded-lg px-4 py-2">CREATE JOB</button>
-          <div className="relative">
+          <div className="relative cursor-pointer">
             <img alt="Avatar" src="https://eu.ui-avatars.com/api/?rounded=true&name=John%20Doe&background=3b82f6&color=fff&size=48"/>
             <span className="absolute -top-2 -right-2 rounded-2xl border-4 px-2 py-0 text-white text-center bg-red-500 border-white">2</span>
           </div>
-          <a className="hidden lg:block font-bold no-underline">LOGOUT</a>
+          <a className="hidden lg:block font-bold no-underline" href="#">LOGOUT</a>
         </div>
       </div>
     </nav>
