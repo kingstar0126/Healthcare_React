@@ -2,7 +2,7 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <div className="bg-white">
+    <footer className="bg-white">
       <div className="container mx-auto block md:flex w-full p-8 space-x-0 md:space-x-2">
         <div className="w-full md:w-1/2">
           <h2 className="font-bold font-5xl mb-1">About us</h2>
@@ -29,7 +29,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </footer>
   );
 };
 
